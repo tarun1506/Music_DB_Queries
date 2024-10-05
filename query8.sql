@@ -1,4 +1,4 @@
-WITH GenreAverageLength AS (
+WITH CTE_GenreAverageLength AS (
     SELECT 
         g.GenreId,
         AVG(t.Milliseconds) AS AvgLength
@@ -11,7 +11,7 @@ WITH GenreAverageLength AS (
     ORDER BY 
         AvgLength DESC
     LIMIT 5
-)
+) -- CTE to get top 5 geners with highest avg track length. 
 SELECT 
     t.TrackId,
     t.Name,

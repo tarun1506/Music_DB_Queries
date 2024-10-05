@@ -1,3 +1,5 @@
+-- This is a creative addition. Query to get artist name based on their tracks
+
 SELECT 
     t.TrackId, 
     t.Name AS TrackName, 

@@ -1,3 +1,5 @@
+--Query to create new table "Music Video"
+
 CREATE TABLE "MusicVideo" (
 	"TrackId"	INTEGER NOT NULL,
 	"video_director"	TEXT NOT NULL,

@@ -1,8 +1,10 @@
-WITH AverageTrackLength AS (
+
+
+WITH CTE_AverageTrackLength AS (
     SELECT AVG(Milliseconds) AS AvgLength
     FROM tracks
-),
-LongerThanAverageTracks AS (
+), -- CTE to get average track length
+CTE_LongerThanAverageTracks AS (
     SELECT 
         TrackId,
         Milliseconds
@@ -11,7 +13,7 @@ LongerThanAverageTracks AS (
     WHERE 
         Milliseconds > (SELECT AvgLength FROM AverageTrackLength)
         AND Milliseconds <= 900000  -- 15 minutes in milliseconds
-)
+) -- CTE to get track id satisfying the condtion 
 SELECT DISTINCT 
     c.CustomerId,
     c.FirstName,

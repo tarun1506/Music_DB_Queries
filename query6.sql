@@ -1,3 +1,5 @@
+-- This is also a crative addition. Query to count number of tracks for the respective artist
+
 SELECT 
     ar.Name AS ArtistName,
     al.Title AS AlbumTitle, 

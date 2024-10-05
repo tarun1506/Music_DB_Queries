@@ -1,5 +1,8 @@
+-- Query to insert records into "Music Video"
+
+-- Trigger to check if there's a track before inserting Video
 CREATE TRIGGER IF NOT EXISTS every_video_has_track
-AFTER INSERT
+BEFORE INSERT
 ON MusicVideo
 BEGIN
 	SELECT
