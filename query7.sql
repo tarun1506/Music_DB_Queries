@@ -1,22 +1,16 @@
-WITH AverageTrackLength AS (
-    SELECT AVG(Milliseconds) AS AvgLength
-    FROM tracks
-), -- CTE to get average track length
-LongerThanAverageTracks AS (
+WITH LongerThanAverageTracks AS (
     SELECT 
-        TrackId,
-        Milliseconds
+        TrackId
     FROM 
         tracks
     WHERE 
-        Milliseconds > (SELECT AvgLength FROM AverageTrackLength)
+        Milliseconds > (SELECT AVG(Milliseconds) FROM tracks)
         AND Milliseconds <= 900000  -- 15 minutes in milliseconds
-) -- CTE to get track id satisfying the condtion 
-SELECT DISTINCT 
+)
+SELECT 
     c.CustomerId,
     c.FirstName,
-    c.LastName,
-    lat.Milliseconds
+    c.LastName
 FROM 
     customers c
 JOIN 
@@ -24,4 +18,6 @@ JOIN
 JOIN 
     invoice_items ii ON i.InvoiceId = ii.InvoiceId
 JOIN 
-    LongerThanAverageTracks lat ON ii.TrackId = lat.TrackId;
+    LongerThanAverageTracks lat ON ii.TrackId = lat.TrackId
+GROUP BY 
+    c.CustomerId, c.FirstName, c.LastName;
