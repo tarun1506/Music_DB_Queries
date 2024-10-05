@@ -1,4 +1,4 @@
-WITH CTE_GenreAverageLength AS (
+WITH GenreAverageLength AS (
     SELECT 
         g.GenreId,
         AVG(t.Milliseconds) AS AvgLength

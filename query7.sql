@@ -1,10 +1,8 @@
-
-
-WITH CTE_AverageTrackLength AS (
+WITH AverageTrackLength AS (
     SELECT AVG(Milliseconds) AS AvgLength
     FROM tracks
 ), -- CTE to get average track length
-CTE_LongerThanAverageTracks AS (
+LongerThanAverageTracks AS (
     SELECT 
         TrackId,
         Milliseconds
